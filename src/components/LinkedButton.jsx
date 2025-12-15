@@ -1,4 +1,5 @@
 import { ArrowUp } from "lucide-react";
+import OutlineButton from "./ui/OutlineButton";
 
 const LinkedButton = () => {
   const handleScroll = () => {
@@ -9,15 +10,9 @@ const LinkedButton = () => {
   };
 
   return (
-    <div className="flex items-center justify-end container mx-auto mt-16">
+    <div className="flex items-center md:justify-end justify-center container mx-auto lg:mt-16 md:mt-12 mt-8 px-3 md:px-4">
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 transition-all duration-700 delay-300">
-        <button
-          onClick={handleScroll}
-          className="px-8 py-4 flex items-center gap-2 bg-white text-indigo-600 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-all duration-300 border-2 border-indigo-600 hover:scale-105"
-        >
-          Explore Freelancers
-          <ArrowUp />
-        </button>
+        <OutlineButton handleScroll={handleScroll} Icon={ArrowUp} />
       </div>
     </div>
   );

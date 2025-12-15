@@ -1,15 +1,20 @@
 const FreelancersCompanies = () => {
   return (
-    <div id="freelancers" className="container mx-auto">
-      <div className="flex items-center justify-center mb-5">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+    <div
+      id="freelancers"
+      className="container mx-auto scroll-mt-28 px-3 md:px-4"
+    >
+      <div className="flex items-center justify-start">
+        <h2 className="md:text-4xl text-2xl font-bold text-gray-900 md:mb-4 mb-2">
           Freelancers &amp; Companies
         </h2>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
         {/* For Freelancers Column */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">For Freelancers</h2>
+          <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-2">
+            For Freelancers
+          </h2>
           <ul className="space-y-3">
             <li className="flex gap-2">
               <span className="text-xl leading-none">•</span>
@@ -47,7 +52,9 @@ const FreelancersCompanies = () => {
 
         {/* For Companies & Employers Column */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">For Companies & Employers</h2>
+          <h2 className="md:text-2xl text-xl font-bold md:mb-4 mb-2">
+            For Companies & Employers
+          </h2>
           <ul className="space-y-3">
             <li className="flex gap-2">
               <span className="text-xl leading-none">•</span>

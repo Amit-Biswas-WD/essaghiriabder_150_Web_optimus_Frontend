@@ -1,4 +1,6 @@
 import { ArrowRight } from "lucide-react";
+import OutlineButton from "./ui/OutlineButton";
+import Button from "./ui/Button";
 
 const BannerSection = () => {
   const handleScroll = () => {
@@ -8,7 +10,7 @@ const BannerSection = () => {
     }
   };
   return (
-    <div className="flex items-center justify-center h-[70vh] container mx-auto">
+    <div className="flex items-center justify-center h-[60vh] container mx-auto px-3 md:px-4 lg:my-0 md:my-0 mt-16 mb-20">
       {/* Main Hero Content */}
       <div className="text-center max-w-5xl mx-auto mt-14">
         {/* Headline */}
@@ -34,19 +36,17 @@ const BannerSection = () => {
         <div
           className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 transition-all duration-700 delay-300`}
         >
-          <button
+          {/* <button
             onClick={handleScroll}
             className="group px-8 py-4 bg-indigo-600 text-white rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-indigo-600/30 hover:shadow-xl hover:shadow-indigo-600/40 hover:scale-105"
           >
             Get Started for Free
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button
-            onClick={handleScroll}
-            className="px-8 py-4 bg-white text-indigo-600 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-all duration-300 border-2 border-indigo-600 hover:scale-105"
-          >
-            Explore Freelancers
-          </button>
+          </button> */}
+
+          <Button Icon={ArrowRight} handleScroll={handleScroll} />
+
+          <OutlineButton handleScroll={handleScroll} />
         </div>
       </div>
     </div>

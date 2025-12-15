@@ -45,9 +45,11 @@ const FAQSection = () => {
   };
 
   return (
-    <div id="faq" className="container mx-auto">
-      <div className="flex items-center justify-center mb-5">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">FAQ</h2>
+    <div id="faq" className="container mx-auto scroll-mt-28 px-3 md:px-4">
+      <div className="flex items-center justify-start md:mb-4 mb-0">
+        <h2 className="md:text-4xl text-2xl font-bold text-gray-900 md:mb-4 mb-2">
+          FAQ
+        </h2>
       </div>
       <div className="space-y-4">
         {faqs.map((faq, index) => (

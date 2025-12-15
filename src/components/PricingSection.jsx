@@ -52,25 +52,28 @@ const PricingSection = () => {
   ];
 
   return (
-    <div id="plans" className="max-w-7xl mx-auto my-20">
+    <div
+      id="plans"
+      className="container mx-auto lg:my-20 md:my-14 my-12 scroll-mt-28 px-3 md:px-4"
+    >
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+      <div className="text-start">
+        <h1 className="md:text-4xl text-2xl font-bold text-gray-900 md:mb-4 mb-2">
           Subscription Plans
         </h1>
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mb-8">
         {plans.map((plan, index) => (
           <div
             key={index}
-            className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105 flex flex-col ${
+            className={`bg-white border border-gray-200 rounded-2xl shadow-lg flex flex-col ${
               plan.highlighted ? "ring-4 ring-blue-500 relative" : ""
             }`}
           >
             {plan.highlighted && (
-              <div className="bg-blue-500 text-white text-center py-2 text-sm font-semibold">
+              <div className=" text-white text-center py-2 text-sm font-semibold">
                 MOST POPULAR
               </div>
             )}

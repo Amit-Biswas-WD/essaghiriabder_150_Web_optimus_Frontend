@@ -111,35 +111,40 @@ function SpecialtiesSection() {
   };
 
   return (
-    <div className="container mx-auto my-20">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Specialties</h1>
-      </div>
+    <div
+      id="specialties"
+      className="container mx-auto lg:my-20 md:my-14 my-12 scroll-mt-28 px-3 md:px-4"
+    >
+      <div className="flex items-center justify-between">
+        <h1 className="md:text-4xl text-2xl font-bold text-gray-900 md:mb-4 mb-2">
+          Specialties
+        </h1>
 
-      <div className="flex justify-end items-center gap-2 mb-3">
-        <button
-          onClick={() => scrollCards("left")}
-          className="relative p-1 group border border-gray-400 rounded-full"
-        >
-          <span className="block pr-1 transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0">
-            <ChevronLeft className="w-5 h-5" />
-          </span>
-          <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
-            <ArrowLeft className="w-5 h-5" />
-          </span>
-        </button>
+        <div className="flex justify-end items-center gap-2 mb-3">
+          <button
+            onClick={() => scrollCards("left")}
+            className="relative p-1 group border border-gray-400 rounded-full"
+          >
+            <span className="block pr-1 transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0">
+              <ChevronLeft className="w-5 h-5" />
+            </span>
+            <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+              <ArrowLeft className="w-5 h-5" />
+            </span>
+          </button>
 
-        <button
-          onClick={() => scrollCards("right")}
-          className="relative p-1 group border border-gray-400 rounded-full"
-        >
-          <span className="block pl-1 transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0">
-            <ChevronRight className="w-5 h-5" />
-          </span>
-          <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
-            <ArrowRight className="w-5 h-5" />
-          </span>
-        </button>
+          <button
+            onClick={() => scrollCards("right")}
+            className="relative p-1 group border border-gray-400 rounded-full"
+          >
+            <span className="block pl-1 transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0">
+              <ChevronRight className="w-5 h-5" />
+            </span>
+            <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+              <ArrowRight className="w-5 h-5" />
+            </span>
+          </button>
+        </div>
       </div>
 
       <div
@@ -192,10 +197,10 @@ function SpecialtiesSection() {
                 >
                   <Icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2">
                   {specialty.title}
                 </h3>
-                <p className="text-purple-300 text-sm mb-4">
+                <p className="text-white text-sm mb-4">
                   {specialty.description}
                 </p>
               </div>
