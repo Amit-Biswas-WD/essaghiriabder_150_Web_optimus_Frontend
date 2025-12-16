@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DollarSign,
   Headphones,
@@ -75,9 +75,36 @@ const specialties = [
 
 const Specialties = () => {
   const [page, setPage] = useState(0);
-  const visibleCount = 4;
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
 
+  // Responsive card count based on screen size
+  const getVisibleCount = () => {
+    if (windowWidth < 640) return 1; // mobile
+    if (windowWidth < 768) return 2; // sm
+    if (windowWidth < 1024) return 2; // md
+    if (windowWidth < 1280) return 3; // lg
+    return 4; // xl
+  };
+
+  const visibleCount = getVisibleCount();
   const totalPages = Math.ceil(specialties.length / visibleCount);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Reset page if it exceeds total pages after resize
+  useEffect(() => {
+    if (page >= totalPages) {
+      setPage(0);
+    }
+  }, [totalPages, page]);
+
   const visibleCards = specialties.slice(
     page * visibleCount,
     page * visibleCount + visibleCount
@@ -128,7 +155,7 @@ const Specialties = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-6 overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {visibleCards.map((card) => {
           const isImg1 = card.img === "/image/img1.png";
           const textColorClass = isImg1 ? "text-white" : "text-black";
@@ -136,15 +163,13 @@ const Specialties = () => {
           return (
             <div
               key={card.id}
-              className="group w-[400px] h-[500px] rounded-2xl overflow-hidden relative"
+              className="group h-[500px] rounded-2xl overflow-hidden relative transition-all duration-500 ease-out"
             >
-              {/* Background Image */}
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-110"
                 style={{ backgroundImage: `url(${card.img})` }}
               ></div>
 
-              {/* NEW Badge added here */}
               <span className="absolute top-3 right-3 z-20 px-3 py-1 bg-white text-[#333333] text-xs font-medium rounded-full shadow-lg">
                 NEW
               </span>
