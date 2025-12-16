@@ -1,0 +1,141 @@
+{
+  "navSection": {
+    "icon": "Essaghiriabder",
+    "navItems": ["Specialties", "Freelancers & Companies", "Plans", "FAQ"],
+    "en": "EN",
+    "ar": "AR"
+  },
+  "heroSection": {
+    "title": "Where long-term work meets trusted talent",
+    "subtitle": "Connect companies, entrepreneurs, and influencers with skilled freelancers for reliable remote work—weekly, monthly, or multi-month engagements. No commissions. No complications.",
+    "getButton": "Get Started for Free",
+    "exploreButton": "Explore Freelancers"
+  },
+  "specialtiesSection": {
+    "title": "Specialties",
+    "new": "New",
+    "specialties": [
+      {
+        "title": "Accounting & Finance",
+        "description": " Bookkeeping, auditing, payroll management."
+      },
+      {
+        "title": "Customer Support / Call Center",
+        "description": "Remote support, sales calls, lead qualification."
+      },
+      {
+        "title": "Graphic Design",
+        "description": " Branding, UI/UX, creative visuals."
+      },
+      {
+        "title": "Programming & Development",
+        "description": "Web, mobile apps, backend, automation."
+      },
+      {
+        "title": "Marketing & Social Media",
+        "description": "Campaigns, content, community management."
+      },
+      {
+        "title": "Writing & Translation",
+        "description": "Copywriting, technical writing, multilingual translation."
+      },
+      {
+        "title": "Business Assistance",
+        "description": "Virtual assistants, project coordination."
+      },
+      {
+        "title": "Video & Editing",
+        "description": "Motion graphics, editing, production."
+      }
+    ]
+  },
+  "freelancersAndCompanies": {
+    "title": "Freelancers & Companies",
+    "titleOne": "For Freelancers",
+    "descriptionOne": [
+      "Access long-term projects that offer stability and serious collaboration.",
+      "Work with companies, influencers, and entrepreneurs who value commitment",
+      "Zero commission: keep 100% of your income.",
+      "Build your professional brand and land multi-month remote contracts.",
+      "Ideal for experts seeking consistent work, not gig-based tasks"
+    ],
+    "titleTwo": "For Companies & Employers",
+    "descriptionTwo": [
+      "Find verified, reliable freelancers for ongoing or long-duration missions.",
+      "Scale your workforce for weeks or months without traditional hiring costs.",
+      "Work directly, off-platform, with full freedom and flexibility.",
+      "Secure a long-term talent partnership with no middleman fees.",
+      "Perfect for businesses needing continuity, quality, and responsibility."
+    ]
+  },
+  "subscriptionPlans": {
+    "title": "Subscription Plans",
+    "subTitle": "Choose the perfect plan for your needs",
+    "Free Plan": {
+      "name": "Free Plan",
+      "price": "$0",
+      "period": "forever",
+      "description": "Explore the platform, browse freelancers, and test all essential features.",
+      "features": [
+        "Browse freelancers",
+        "Test essential features",
+        "Platform exploration",
+        "Basic access"
+      ]
+    },
+    "Annual Plan": {
+      "name": "Annual Plan",
+      "price": "$119",
+      "period": "per year",
+      "originalPrice": "$250",
+      "description": "Best for professionals and businesses seeking continuous access to long-term opportunities.",
+      "features": [
+        "All Free Plan features",
+        "Long-term opportunities",
+        "Professional access",
+        "Priority support"
+      ],
+      "connects": "500 connects"
+    },
+    "Lifetime Plan": {
+      "name": "Lifetime Plan",
+      "price": "$299",
+      "period": "one-time",
+      "originalPrice": "$500",
+      "description": "Unlimited, permanent access—ideal for agencies, teams, and serious freelancers. 1000 connect",
+      "features": [
+        "Unlimited access",
+        "Permanent membership",
+        "Perfect for agencies",
+        "Team collaboration"
+      ],
+      "connects": "1000 connects"
+    }
+  },
+  "FAQSection": {
+    "title": "FAQ Section",
+    "questions": [
+      {
+        "q": "How does FreelanceCDI work?",
+        "a": "You can find a wide range of freelancers specializing in areas such as accounting, customer support, graphic design, programming, marketing, writing, business assistance, and video editing."
+      },
+      {
+        "q": "Do you offer short-term gigs?",
+        "a": "We offer different subscription plans including a free plan, an annual plan, and a lifetime plan. Each plan provides varying levels of access to connect with freelancers and utilize platform features."
+      },
+      {
+        "q": "How do payments work?",
+        "a": "No, there are no commission fees. Freelancers keep 100% of their income from projects secured through the platform."
+      },
+      {
+        "q": " Is FreelanceCDI available worldwide?",
+        "a": "Yes, our platform is designed to facilitate long-term engagements between companies and freelancers, allowing for stable and ongoing collaborations."
+      },
+      {
+        "q": "What types of skills are accepted?",
+        "a": "Yes, our platform is designed to facilitate long-term engagements between companies and freelancers, allowing for stable and ongoing collaborations."
+      }
+    ]
+  },
+  "CTA": "Explore Plans"
+}

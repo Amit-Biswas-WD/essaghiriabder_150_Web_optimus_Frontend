@@ -13,96 +13,46 @@ import {
   ArrowLeft,
   ArrowRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
+// Only include id and img here; title/description will come from i18n
 const specialties = [
-  {
-    id: 1,
-    title: "Accounting & Finance",
-    icon: DollarSign,
-    description: "Bookkeeping, auditing, payroll management",
-    img: "/image/img1.png",
-  },
-  {
-    id: 2,
-    title: "Customer Support / Call Center",
-    icon: Headphones,
-    description: "Remote support, sales calls, lead qualification",
-    img: "/image/img2.png",
-  },
-  {
-    id: 3,
-    title: "Graphic Design",
-    icon: Palette,
-    description: "Branding, UI/UX, creative visuals",
-    img: "/image/img3.png",
-  },
-  {
-    id: 4,
-    title: "Programming & Development",
-    icon: Code,
-    description: "Web, mobile apps, backend, automation",
-    img: "/image/img4.png",
-  },
-  {
-    id: 5,
-    title: "Marketing & Social Media",
-    icon: Megaphone,
-    description: "Campaigns, content, community management",
-    img: "/image/img3.png",
-  },
-  {
-    id: 6,
-    title: "Writing & Translation",
-    icon: PenTool,
-    description: "Copywriting, technical writing, multilingual translation",
-    img: "/image/img2.png",
-  },
-  {
-    id: 7,
-    title: "Business Assistance",
-    icon: Users,
-    description: "Virtual assistants, project coordination",
-    img: "/image/img4.png",
-  },
-  {
-    id: 8,
-    title: "Video & Editing",
-    icon: Video,
-    description: "Motion graphics, editing, production",
-    img: "/image/img1.png",
-  },
+  { id: 1, icon: DollarSign, img: "/image/img1.png" },
+  { id: 2, icon: Headphones, img: "/image/img2.png" },
+  { id: 3, icon: Palette, img: "/image/img3.png" },
+  { id: 4, icon: Code, img: "/image/img4.png" },
+  { id: 5, icon: Megaphone, img: "/image/img3.png" },
+  { id: 6, icon: PenTool, img: "/image/img2.png" },
+  { id: 7, icon: Users, img: "/image/img4.png" },
+  { id: 8, icon: Video, img: "/image/img1.png" },
 ];
 
 const Specialties = () => {
+  const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
 
-  // Responsive card count based on screen size
   const getVisibleCount = () => {
-    if (windowWidth < 640) return 1; // mobile
-    if (windowWidth < 768) return 2; // sm
-    if (windowWidth < 1024) return 2; // md
-    if (windowWidth < 1280) return 3; // lg
-    return 4; // xl
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 768) return 2;
+    if (windowWidth < 1024) return 2;
+    if (windowWidth < 1280) return 3;
+    return 4;
   };
 
   const visibleCount = getVisibleCount();
   const totalPages = Math.ceil(specialties.length / visibleCount);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Reset page if it exceeds total pages after resize
   useEffect(() => {
-    if (page >= totalPages) {
-      setPage(0);
-    }
+    if (page >= totalPages) setPage(0);
   }, [totalPages, page]);
 
   const visibleCards = specialties.slice(
@@ -125,7 +75,7 @@ const Specialties = () => {
     >
       <div className="flex items-center justify-between mb-6">
         <h1 className="md:text-4xl text-2xl font-bold text-gray-900">
-          Specialties
+          {t("specialtiesSection.title")}
         </h1>
         <div className="flex gap-2">
           <button
@@ -156,9 +106,14 @@ const Specialties = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {visibleCards.map((card) => {
+        {visibleCards.map((card, index) => {
           const isImg1 = card.img === "/image/img1.png";
           const textColorClass = isImg1 ? "text-white" : "text-black";
+
+          // Access translation safely
+          const specialtyData = t(`specialtiesSection.specialties`, {
+            returnObjects: true,
+          })[index]; // get the corresponding item by index
 
           return (
             <div
@@ -171,7 +126,7 @@ const Specialties = () => {
               ></div>
 
               <span className="absolute top-3 right-3 z-20 px-3 py-1 bg-white text-[#333333] text-xs font-medium rounded-full shadow-lg">
-                NEW
+                {t("specialtiesSection.new")}
               </span>
 
               <div className="relative z-10 h-full p-3 grid grid-rows-[1fr_auto]">
@@ -179,16 +134,16 @@ const Specialties = () => {
                   <h2
                     className={`${textColorClass} text-4xl font-semibold max-w-full`}
                   >
-                    {card.title}
+                    {specialtyData.title}
                   </h2>
                 </div>
 
                 <div className="flex flex-col gap-2 self-end pb-2">
                   <h2 className={`${textColorClass} text-lg font-medium`}>
-                    {card.title}
+                    {specialtyData.title}
                   </h2>
                   <p className={`${textColorClass} text-sm`}>
-                    {card.description}
+                    {specialtyData.description}
                   </p>
                 </div>
               </div>

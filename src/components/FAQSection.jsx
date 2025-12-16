@@ -1,43 +1,23 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { Plus, Minus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const FAQSection = () => {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
   const [heights, setHeights] = useState([]);
   const contentRefs = useRef([]);
 
-  const faqs = [
-    {
-      question: "How does FreelanceCDI work?",
-      answer:
-        "Freelancers and companies connect directly for long-term or remote contracts. The platform charges no commission — only a simple subscription model.",
-    },
-    {
-      question: "Do you offer short-term gigs?",
-      answer:
-        "No. FreelanceCDI focuses on weekly, monthly, and multi-month projects to create stable, professional collaborations.",
-    },
-    {
-      question: "How do payments work?",
-      answer:
-        "Payments occur directly between freelancers and clients (e.g., bank transfer, external methods). FreelanceCDI does not take a cut.",
-    },
-    {
-      question: "Is FreelanceCDI available worldwide?",
-      answer:
-        "Yes. Freelancers and companies from any country can register and collaborate.",
-    },
-    {
-      question: "What types of skills are accepted?",
-      answer:
-        "Accounting, development, marketing, design, customer service, video editing, translation, and more.",
-    },
-  ];
+  // Memoize faqs to avoid recalculating on every render
+  const faqs = useMemo(
+    () => t("FAQSection.questions", { returnObjects: true }),
+    [t]
+  );
 
   useEffect(() => {
     const newHeights = contentRefs.current.map((ref) => ref?.scrollHeight || 0);
     setHeights(newHeights);
-  }, []);
+  }, [faqs]); // only recalc when faqs change
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -45,7 +25,9 @@ const FAQSection = () => {
 
   return (
     <div id="faq" className="container mx-auto scroll-mt-28 px-3 md:px-4">
-      <h2 className="md:text-4xl text-2xl font-bold text-gray-900 mb-4">FAQ</h2>
+      <h2 className="md:text-4xl text-2xl font-bold text-gray-900 mb-4">
+        {t("FAQSection.title")}
+      </h2>
 
       <div className="space-y-4">
         {faqs.map((faq, index) => {
@@ -61,15 +43,15 @@ const FAQSection = () => {
             >
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full px-8 py-6 flex items-center justify-between text-left"
+                className="w-full px-6 py-4 flex items-center justify-between text-left"
               >
                 <span
-                  className="text-xl sm:text-2xl font-medium pr-4 transition-colors duration-300"
+                  className="text-lg sm:text-xl font-medium pr-4 transition-colors duration-300"
                   style={{
                     color: isOpen ? "#FFFFFF" : "#0F172A",
                   }}
                 >
-                  {faq.question}
+                  {faq.q}
                 </span>
 
                 {isOpen ? (
@@ -95,7 +77,7 @@ const FAQSection = () => {
                       color: "#AFAFCA",
                     }}
                   >
-                    {faq.answer}
+                    {faq.a}
                   </p>
                 </div>
               </div>

@@ -1,8 +1,11 @@
 import { ArrowUp } from "lucide-react";
 // import OutlineButton from "./ui/OutlineButton";
 import ButtonTwo from "./ui/ButtonTwo";
+import { useTranslation } from "react-i18next";
 
 const LinkedButton = () => {
+  const { t } = useTranslation();
+
   const handleScroll = () => {
     const plansSection = document.getElementById("plans");
     if (plansSection) {
@@ -19,7 +22,7 @@ const LinkedButton = () => {
           handleScroll={handleScroll}
           Icon={ArrowUp}
         >
-          Explore Plans
+          {t("CTA")}
         </ButtonTwo>
       </div>
     </div>
