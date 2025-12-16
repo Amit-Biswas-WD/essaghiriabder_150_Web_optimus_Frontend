@@ -35,7 +35,6 @@ const FAQSection = () => {
   ];
 
   useEffect(() => {
-    // Store the scrollHeight of each content div
     const newHeights = contentRefs.current.map((ref) => ref?.scrollHeight || 0);
     setHeights(newHeights);
   }, []);
@@ -46,48 +45,63 @@ const FAQSection = () => {
 
   return (
     <div id="faq" className="container mx-auto scroll-mt-28 px-3 md:px-4">
-      <div className="flex items-center justify-start md:mb-4 mb-0">
-        <h2 className="md:text-4xl text-2xl font-bold text-gray-900 md:mb-4 mb-2">
-          FAQ
-        </h2>
-      </div>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="rounded-2xl bg-gray-100 text-slate-900 transition-all duration-100"
-          >
-            <button
-              onClick={() => toggleAccordion(index)}
-              className="w-full px-5 py-5 flex items-center justify-between text-left"
-            >
-              <span className="text-lg sm:text-xl font-medium pr-4">
-                {faq.question}
-              </span>
-              <div className="flex-shrink-0">
-                {openIndex === index ? (
-                  <Minus className="w-6 h-6 transition-transform duration-100" />
-                ) : (
-                  <Plus className="w-6 h-6 transition-transform duration-100" />
-                )}
-              </div>
-            </button>
+      <h2 className="md:text-4xl text-2xl font-bold text-gray-900 mb-4">FAQ</h2>
 
+      <div className="space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+
+          return (
             <div
-              ref={(el) => (contentRefs.current[index] = el)}
+              key={index}
+              className="rounded-2xl transition-all duration-300"
               style={{
-                maxHeight: openIndex === index ? heights[index] + "px" : "0px",
-                opacity: openIndex === index ? 1 : 0,
-                transition: "max-height 0.5s ease, opacity 0.5s ease",
-                overflow: "hidden",
+                backgroundColor: isOpen ? "#161622" : "#F9F9FB",
               }}
             >
-              <div className="px-6 pb-6 sm:px-8 sm:pb-7">
-                <p className="text-slate-900 leading-relaxed">{faq.answer}</p>
+              <button
+                onClick={() => toggleAccordion(index)}
+                className="w-full px-8 py-6 flex items-center justify-between text-left"
+              >
+                <span
+                  className="text-xl sm:text-2xl font-medium pr-4 transition-colors duration-300"
+                  style={{
+                    color: isOpen ? "#FFFFFF" : "#0F172A",
+                  }}
+                >
+                  {faq.question}
+                </span>
+
+                {isOpen ? (
+                  <Minus className="w-6 h-6 text-white" />
+                ) : (
+                  <Plus className="w-6 h-6 text-slate-900" />
+                )}
+              </button>
+
+              <div
+                ref={(el) => (contentRefs.current[index] = el)}
+                style={{
+                  maxHeight: isOpen ? heights[index] + "px" : "0px",
+                  opacity: isOpen ? 1 : 0,
+                  transition: "max-height 0.5s ease, opacity 0.5s ease",
+                  overflow: "hidden",
+                }}
+              >
+                <div className="px-6 pb-6 sm:px-8 sm:pb-7">
+                  <p
+                    className="sm:text-lg text-base leading-relaxed transition-colors duration-300"
+                    style={{
+                      color: "#AFAFCA",
+                    }}
+                  >
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

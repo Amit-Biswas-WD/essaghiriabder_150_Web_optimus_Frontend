@@ -59,6 +59,7 @@ const NavSection = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // Navbar shadow on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -68,13 +69,18 @@ const NavSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Disable body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+  }, [open]);
+
   return (
     <div
       className={`sticky top-0 z-50 bg-neutral-100 transition-all duration-300 ${
         scrolled ? "border-b shadow-sm" : "border-b border-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between py-6">
           {/* Logo */}
           <h2 className="text-3xl font-bold text-black">Essaghiriabder</h2>
@@ -103,19 +109,19 @@ const NavSection = () => {
             </li>
           </ul>
 
-          {/* Mobile Button */}
-          <button className="lg:hidden" onClick={() => setOpen(!open)}>
+          {/* Mobile Toggle Button */}
+          <button className="lg:hidden z-50" onClick={() => setOpen(!open)}>
             {open ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu (OVERLAY – does NOT push banner) */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          className={`lg:hidden absolute left-0 top-full w-full bg-neutral-200 overflow-hidden transition-all duration-500 ease-in-out ${
             open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <ul className="flex flex-col gap-4 pb-6 text-lg font-medium">
+          <ul className="flex flex-col gap-4 px-4 pb-6 text-lg font-medium">
             <li>
               <a
                 href="#specialties"

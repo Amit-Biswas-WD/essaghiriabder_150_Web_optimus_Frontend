@@ -17,7 +17,7 @@ const BannerSection = () => {
         <h1
           className={`text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight transition-all duration-700 delay-100 `}
         >
-          Where long-term work meets{" "}
+          Where long-term work meets
           <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             trusted talent
           </span>
@@ -36,14 +36,6 @@ const BannerSection = () => {
         <div
           className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 transition-all duration-700 delay-300`}
         >
-          {/* <button
-            onClick={handleScroll}
-            className="group px-8 py-4 bg-indigo-600 text-white rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-indigo-600/30 hover:shadow-xl hover:shadow-indigo-600/40 hover:scale-105"
-          >
-            Get Started for Free
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button> */}
-
           <Button Icon={ArrowRight} handleScroll={handleScroll} />
 
           <OutlineButton handleScroll={handleScroll} />
